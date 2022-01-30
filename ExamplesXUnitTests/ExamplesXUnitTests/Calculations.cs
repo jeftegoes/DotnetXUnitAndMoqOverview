@@ -1,6 +1,6 @@
-namespace Calculations
+namespace ExamplesXUnitTests
 {
-    public class Calculator
+    public class Calculations
     {
         public List<int> FiboNumbers => new List<int> { 1, 1, 2, 3, 5, 8, 13 };
         
@@ -12,6 +12,11 @@ namespace Calculations
         public double AddDouble(double a, double b)
         {
             return a + b;
+        }
+
+        public bool IsOdd(int value)
+        {
+            return (value % 2) == 1;
         }
     }
 }

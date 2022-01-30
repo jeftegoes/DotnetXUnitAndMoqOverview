@@ -1,8 +1,8 @@
 using Xunit;
 
-namespace Calculations.Tests
+namespace ExamplesXUnitTests.Tests
 {
-    public class NamesTest
+    public class NamesTests
     {
         [Fact]
         public void MakeFullName_GivenName_ReturnString()

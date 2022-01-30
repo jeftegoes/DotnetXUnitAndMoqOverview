@@ -1,4 +1,4 @@
-namespace Calculations
+namespace ExamplesXUnitTests
 {
     public class Names
     {
