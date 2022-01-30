@@ -102,6 +102,22 @@ namespace ExamplesXUnitTests.Tests
             Assert.Equal(expected, calculations.IsOdd(value));
         }
 
+        [Theory]
+        [MemberData(nameof(TestDataShare.IsOddOrEvenExternalData), MemberType = typeof(TestDataShare))]
+        public void IsOdd_TestOddAndEvenSharedDataExternal(int value, bool expected)
+        {
+            var calculations = _calculationsFixture.Calculations;
+            Assert.Equal(expected, calculations.IsOdd(value));
+        }
+
+        [Theory]
+        [IsOddOrEvenData]
+        public void IsOdd_TestOddAndEvenSharedDataAttribute(int value, bool expected)
+        {
+            var calculations = _calculationsFixture.Calculations;
+            Assert.Equal(expected, calculations.IsOdd(value));
+        }
+
         public void Dispose()
         {
             _memoryStream.Close();

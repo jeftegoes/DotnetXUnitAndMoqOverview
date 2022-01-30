@@ -16,6 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="IsOddOrEventTestData.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ExamplesXUnitTests\ExamplesXUnitTests.csproj" />
   </ItemGroup>
 
