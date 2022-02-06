@@ -25,7 +25,7 @@ public class ProductController : ControllerBase
         return Ok(products);
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetProductById(string id)
     {
         var products = await _productService.GetProductsAsync();

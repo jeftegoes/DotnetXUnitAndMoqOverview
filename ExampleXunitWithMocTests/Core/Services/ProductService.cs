@@ -5,14 +5,18 @@ namespace Core.Services
 {
     public class ProductService : IProductService
     {
-        public Task<Product> GetProductByIdAsync(int id)
+        private readonly IProductRepository _productRepository;
+
+        public ProductService(IProductRepository productRepository)
         {
-            throw new NotImplementedException();
+            _productRepository = productRepository;
+
         }
 
         public Task<IReadOnlyList<Product>> GetProductsAsync()
-        {
-            throw new NotImplementedException();
-        }
+            => _productRepository.GetProductsAsync();
+
+        public Task<Product> GetProductByIdAsync(int id)
+            => _productRepository.GetProductByIdAsync(id);
     }
 }
