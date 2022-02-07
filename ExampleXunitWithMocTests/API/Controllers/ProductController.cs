@@ -1,3 +1,5 @@
+using API.Dto;
+using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,8 +30,18 @@ public class ProductController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProductById(string id)
     {
-        var products = await _productService.GetProductsAsync();
+        var product = await _productService.GetProductsAsync();
 
-        return Ok(products);
+        return Ok(product);
+    }
+
+    [HttpPost]
+    public IActionResult GetProductById(ProductDto productDto)
+    {
+        var product = new Product(productDto.Name, productDto.Description, productDto.Price);
+
+        var productInDb = _productService.Add(product);
+
+        return Ok(productInDb);
     }
 }

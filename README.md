@@ -2,7 +2,32 @@
 
 ## Contents <!-- omit in toc -->
 
-
+- [1. What's is xUnit.net](#1-whats-is-xunitnet)
+- [2. Features](#2-features)
+- [3. Package dependencies](#3-package-dependencies)
+- [4. Phases of unit testing](#4-phases-of-unit-testing)
+  - [4.1. Arrange](#41-arrange)
+  - [4.2. Act](#42-act)
+  - [4.3. Assert](#43-assert)
+- [5. Commons asserts](#5-commons-asserts)
+  - [5.1. Any values](#51-any-values)
+  - [5.2. Boolean](#52-boolean)
+  - [5.3. Strings](#53-strings)
+  - [5.4. Collections](#54-collections)
+  - [5.5. Range values](#55-range-values)
+  - [5.6. Assert each items of the collection match the condition](#56-assert-each-items-of-the-collection-match-the-condition)
+  - [5.7. Assert the collection contains 3 items and the items match the conditions (in the declared order)](#57-assert-the-collection-contains-3-items-and-the-items-match-the-conditions-in-the-declared-order)
+  - [5.8. Exceptions](#58-exceptions)
+  - [5.9. Object types](#59-object-types)
+  - [5.10. Events](#510-events)
+- [Collections and traits](#collections-and-traits)
+- [Fixtures](#fixtures)
+- [Data driven tests in xUnit.Net](#data-driven-tests-in-xunitnet)
+  - [Inline attribute](#inline-attribute)
+  - [Property/Method](#propertymethod)
+- [Unit testing legacy code](#unit-testing-legacy-code)
+  - [Sprout methods](#sprout-methods)
+  - [Sprout class](#sprout-class)
 
 ## 1. What's is xUnit.net
 
@@ -25,6 +50,7 @@
 - dotnet add package Microsoft.NET.Test.Sdk
 - dotnet add package xunit
 - dotnet add package xunit.runner.visualstudio
+- dotnet add package Moq
 
 ## 4. Phases of unit testing
 
@@ -46,3 +72,193 @@
 ### 4.3. Assert
 
 - Assert means you compare the output of your methods, are you of your test code that you run in act phase with the expected values? That's called asset.
+
+## 5. Commons asserts
+
+### 5.1. Any values
+```
+int value = 0;
+
+Assert.Equal(42, value);
+Assert.NotEqual(42, value);
+```
+
+### 5.2. Boolean
+```
+bool b = true;
+
+Assert.True(b, "b should be true");
+Assert.False(b, "b should be false");
+```
+
+### 5.3. Strings
+```
+var str = "";
+
+Assert.Equal("", str, ignoreCase: false, ignoreLineEndingDifferences: false, ignoreWhiteSpaceDifferences: false);
+Assert.StartsWith("prefix", str, StringComparison.Ordinal);
+Assert.EndsWith("suffix", str, StringComparison.Ordinal);
+Assert.Matches("[0-9]+", str);
+Assert.Contains("jefte", str, StringComparison.InvariantCultureIgnoreCase);
+```
+
+### 5.4. Collections
+```
+var collection = new [] { 1, 2, 3 };
+
+Assert.Empty(collection);
+Assert.NotEmpty(collection);
+Assert.Single(collection); // Contains only 1 item
+Assert.Single(collection, item => item == 1); // Contains only 1 item
+Assert.Equal(new int[] { 1, 2, 3 }, collection);
+Assert.Contains(0, collection);
+Assert.Contains(collection, item => item == 1);
+Assert.DoesNotContain(0, collection);
+```
+
+### 5.5. Range values
+
+### 5.6. Assert each items of the collection match the condition
+```
+var age = 35;
+
+Assert.InRange(age, 25, 40);
+```
+
+### 5.7. Assert the collection contains 3 items and the items match the conditions (in the declared order)
+```
+Assert.Collection(collection,
+  item => Assert.Equal(1, item),
+  item => Assert.Equal(2, item),
+  item => Assert.Equal(3, item));
+```
+
+### 5.8. Exceptions
+```
+var ex1 = Assert.Throws<Exception>(() => Console.WriteLine()); // Return the thrown exception
+var ex2 = await Assert.ThrowsAsync<Exception>(() => Task.FromResult(1)); // Return the thrown exception
+Assert.Equal("message", ex1.Message);
+```
+
+### 5.9. Object types
+```
+var customer = new Customer();
+Assert.IsType(typeof(Customer), customer);
+```
+
+### 5.10. Events
+```
+var test = new Test();
+Assert.Raises<EventArgs>(
+    handler => test.MyEvent += handler,
+    handler => test.MyEvent -= handler,
+    () => test.RaiseEvent());
+```
+
+## Collections and traits
+- Grouping tests in xUnit.Net
+  - Multiple tests can be grouped into one category
+  - Caregories allow us to view and run the tests in batches
+  - Grouping is done via `[Trait]` attribute
+  - Visual studio for windows is the best tool to work with Groups
+
+Ex:
+
+```
+[Fact]
+[Trait("Category", "Fibo")]
+public void CheckFiboIsNotFour()
+{
+    /* ... */
+}
+```
+
+## Fixtures
+
+Ex:
+```
+public class CalculationsFixture
+{
+    public Calculations Calculations => new Calculations();
+}
+
+public class CalculationsTests : IClassFixture<CalculationsFixture>
+{
+    private readonly CalculationsFixture _calculationsFixture;
+
+    public CalculationsTests(CalculationsFixture calculationsFixture)
+    {
+        _testOutputHelper = testOutputHelper;
+    }
+
+    [Fact]
+    public void Add_GivenTwoIntValues_ReturnsInt()
+    {
+        var calculations = _calculationsFixture.Calculations;
+        /* ... */
+    }
+
+    [Fact]
+    public void AddDouble_GivenTwoDoubleValues_ReturnsDouble()
+    {
+        var calculations = _calculationsFixture.Calculations;
+        /* ... */
+    }
+}
+```
+
+## Data driven tests in xUnit.Net
+|                                 | Shareable | Needs developers |
+|---------------------------------|-----------|------------------|
+| Inline attribute `[InlineData]` | No        | Yes              |
+| Property/Method `[MemberData]`  | Yes       | Yes              |
+| Custom attribute                | Yes       | Yes              |
+| External data                   | Yes       | No               |
+
+### Inline attribute
+
+Ex:
+```
+[Theory]
+[InlineData(1, true)]
+[InlineData(200, false)]
+public void IsOdd_TestOddAndEven(int value, bool expected)
+{
+    var calculations = new Calculations;
+    Assert.Equal(expected, calculations.IsOdd(value));
+}
+```
+
+### Property/Method
+
+Ex:
+```
+[Theory]
+[MemberData(nameof(TestDataShare.IsOddOrEvenData), MemberType = typeof(TestDataShare))]
+public void IsOdd_TestOddAndEvenSharedData(int value, bool expected)
+{
+    var calculations = _calculationsFixture.Calculations;
+    Assert.Equal(expected, calculations.IsOdd(value));
+}
+```
+
+## Unit testing legacy code
+
+- What's legacy code?
+  - Legacy code has many dependencies, does not follow SOLID principles and is hard to test
+- Why writting tests for legacy code?
+  - To make sure when we change or expand the code we do not introduce bugs
+- Should tests be added to the entire project?
+  - **NO!**
+
+### Sprout methods
+- Used when an existing (legacy) method need to be expanded
+- Collects the added code into a new methods
+- Tests are written for the added methods
+- Test driven development can be applied
+
+### Sprout class
+- Used mainly to eliminate dependencies
+- Collects the added come into a new class with similar methods
+- Tests are written for the added methods
+- Test driven development can be applied

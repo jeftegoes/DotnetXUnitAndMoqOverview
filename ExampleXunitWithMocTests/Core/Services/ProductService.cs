@@ -10,7 +10,11 @@ namespace Core.Services
         public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
+        }
 
+        public Product Add(Product product)
+        {
+            return _productRepository.Add(product);
         }
 
         public Task<IReadOnlyList<Product>> GetProductsAsync()

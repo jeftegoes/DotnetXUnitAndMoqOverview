@@ -11,7 +11,14 @@ namespace Infrastructure.Data
         public ProductRepository(StoreContext storeContext)
         {
             _storeContext = storeContext;
+        }
 
+        public Product Add(Product product)
+        {
+            _storeContext.Product.Add(product);
+            _storeContext.SaveChanges();
+
+            return product;
         }
 
         public async Task<Product> GetProductByIdAsync(int id)
