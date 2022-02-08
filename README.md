@@ -38,9 +38,9 @@
 ## 2. Features
 
 - **xUnit.net** supports multiple platforms, you can use for:
-- Testing the .NET Framework applications.
-- Xamarin applications.
-- Writing unit tests, for your .NET Core Applications and including ASP.NET Core.
+  - Testing the .NET Framework applications.
+  - Xamarin applications.
+  - Writing unit tests, for your .NET Core Applications and including ASP.NET Core.
 - Supports parallel tests, execution which will speed up the execution of a unit tests.
 - It supports something that we call Data Driven Tests, and that means that when you have a test that will receive different inputs and you will expect different outputs for each input, and instead of writing multiple tests, you can basically write one test and then pass different data to it and then check to see if the output is as expected. It will make your writing test a lot quicker and easier.
 - Designed to be extensible, that means that you can add more data types, attributes, assets to xUnit.net and also you can use it alongside other testing frameworks.
@@ -159,11 +159,11 @@ Assert.Raises<EventArgs>(
 ```
 
 ## 6. Collections and traits
-- Grouping tests in xUnit.Net
-  - Multiple tests can be grouped into one category
-  - Caregories allow us to view and run the tests in batches
-  - Grouping is done via `[Trait]` attribute
-  - Visual studio for windows is the best tool to work with Groups
+- Grouping tests in xUnit.Net.
+  - Multiple tests can be grouped into one category.
+  - Caregories allow us to view and run the tests in batches.
+  - Grouping is done via `[Trait]` attribute.
+  - Visual studio for windows is the best tool to work with Groups.
 
 Ex:
 
@@ -248,27 +248,27 @@ public void IsOdd_TestOddAndEvenSharedData(int value, bool expected)
 ## 9. Unit testing legacy code
 
 - What's legacy code?
-  - Legacy code has many dependencies, does not follow SOLID principles and is hard to test
+  - Legacy code has many dependencies, does not follow SOLID principles and is hard to test.
 - Why writting tests for legacy code?
-  - To make sure when we change or expand the code we do not introduce bugs
+  - To make sure when we change or expand the code we do not introduce bugs.
 - Should tests be added to the entire project?
   - **NO!**
 
 ### 9.1. Sprout methods
-- Used when an existing (legacy) method need to be expanded
-- Collects the added code into a new methods
-- Tests are written for the added methods
-- Test driven development can be applied
+- Used when an existing (legacy) method need to be expanded.
+- Collects the added code into a new methods.
+- Tests are written for the added methods.
+- Test driven development can be applied.
 
 ### 9.2. Sprout class
-- Used mainly to eliminate dependencies
-- Collects the added come into a new class with similar methods
-- Tests are written for the added methods
-- Test driven development can be applied
+- Used mainly to eliminate dependencies.
+- Collects the added come into a new class with similar methods.
+- Tests are written for the added methods.
+- Test driven development can be applied.
 
 ## 10. Unit test coverage
 - What is test coverage?
-  - The amount of code which has unit tests. Expressed by percentage
+  - The amount of code which has unit tests. Expressed by percentage.
 - What tools are available?
   - Visual Studio
   - VsCode
