@@ -31,7 +31,7 @@
 - [10. Unit test coverage](#10-unit-test-coverage)
   - [10.1. Command](#101-command)
 
-## 1. What's is xUnit.net
+## 1. What's xUnit.net
 
 - **xUnit.net** is a free, open source, unit testing tool for the .NET Framework/.NET Core/.NET X. Written by the original inventor of NUnit v2, xUnit.net is the latest technology for unit testing C#, F#, VB.NET and other .NET languages. xUnit.net works with ReSharper, CodeRush, TestDriven.NET and Xamarin. It is part of the .NET Foundation, and operates under their code of conduct.
 
