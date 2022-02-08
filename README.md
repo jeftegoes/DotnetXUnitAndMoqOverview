@@ -20,14 +20,16 @@
   - [5.8. Exceptions](#58-exceptions)
   - [5.9. Object types](#59-object-types)
   - [5.10. Events](#510-events)
-- [Collections and traits](#collections-and-traits)
-- [Fixtures](#fixtures)
-- [Data driven tests in xUnit.Net](#data-driven-tests-in-xunitnet)
-  - [Inline attribute](#inline-attribute)
-  - [Property/Method](#propertymethod)
-- [Unit testing legacy code](#unit-testing-legacy-code)
-  - [Sprout methods](#sprout-methods)
-  - [Sprout class](#sprout-class)
+- [6. Collections and traits](#6-collections-and-traits)
+- [7. Fixtures](#7-fixtures)
+- [8. Data driven tests in xUnit.Net](#8-data-driven-tests-in-xunitnet)
+  - [8.1. Inline attribute](#81-inline-attribute)
+  - [8.2. Property/Method](#82-propertymethod)
+- [9. Unit testing legacy code](#9-unit-testing-legacy-code)
+  - [9.1. Sprout methods](#91-sprout-methods)
+  - [9.2. Sprout class](#92-sprout-class)
+- [10. Unit test coverage](#10-unit-test-coverage)
+  - [10.1. Command](#101-command)
 
 ## 1. What's is xUnit.net
 
@@ -51,6 +53,7 @@
 - dotnet add package xunit
 - dotnet add package xunit.runner.visualstudio
 - dotnet add package Moq
+- dotnet add package coverlet.msbuild
 
 ## 4. Phases of unit testing
 
@@ -155,7 +158,7 @@ Assert.Raises<EventArgs>(
     () => test.RaiseEvent());
 ```
 
-## Collections and traits
+## 6. Collections and traits
 - Grouping tests in xUnit.Net
   - Multiple tests can be grouped into one category
   - Caregories allow us to view and run the tests in batches
@@ -173,7 +176,7 @@ public void CheckFiboIsNotFour()
 }
 ```
 
-## Fixtures
+## 7. Fixtures
 
 Ex:
 ```
@@ -207,7 +210,7 @@ public class CalculationsTests : IClassFixture<CalculationsFixture>
 }
 ```
 
-## Data driven tests in xUnit.Net
+## 8. Data driven tests in xUnit.Net
 |                                 | Shareable | Needs developers |
 |---------------------------------|-----------|------------------|
 | Inline attribute `[InlineData]` | No        | Yes              |
@@ -215,7 +218,7 @@ public class CalculationsTests : IClassFixture<CalculationsFixture>
 | Custom attribute                | Yes       | Yes              |
 | External data                   | Yes       | No               |
 
-### Inline attribute
+### 8.1. Inline attribute
 
 Ex:
 ```
@@ -229,7 +232,7 @@ public void IsOdd_TestOddAndEven(int value, bool expected)
 }
 ```
 
-### Property/Method
+### 8.2. Property/Method
 
 Ex:
 ```
@@ -242,7 +245,7 @@ public void IsOdd_TestOddAndEvenSharedData(int value, bool expected)
 }
 ```
 
-## Unit testing legacy code
+## 9. Unit testing legacy code
 
 - What's legacy code?
   - Legacy code has many dependencies, does not follow SOLID principles and is hard to test
@@ -251,14 +254,27 @@ public void IsOdd_TestOddAndEvenSharedData(int value, bool expected)
 - Should tests be added to the entire project?
   - **NO!**
 
-### Sprout methods
+### 9.1. Sprout methods
 - Used when an existing (legacy) method need to be expanded
 - Collects the added code into a new methods
 - Tests are written for the added methods
 - Test driven development can be applied
 
-### Sprout class
+### 9.2. Sprout class
 - Used mainly to eliminate dependencies
 - Collects the added come into a new class with similar methods
 - Tests are written for the added methods
 - Test driven development can be applied
+
+## 10. Unit test coverage
+- What is test coverage?
+  - The amount of code which has unit tests. Expressed by percentage
+- What tools are available?
+  - Visual Studio
+  - VsCode
+
+### 10.1. Command
+- Run code covarage
+  - dotnet test /p:CollectCoverage=true
+- Run code covarage and export
+  - dotnet test /p:CollectCoverage=true /p:CoverletOutput=sprout.xml

@@ -1,0 +1,75 @@
+{
+  "ExampleSproutClassTechnique.dll": {
+    "D:\\CSharp\\DotnetXUnitAndMoqOverview\\ExampleSproutTechnique\\ExampleSproutClassTechnique\\Program.cs": {
+      "Program": {
+        "System.Void Program::<Main>$(System.String[])": {
+          "Lines": {
+            "2": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\CSharp\\DotnetXUnitAndMoqOverview\\ExampleSproutTechnique\\ExampleSproutClassTechnique\\Employee.cs": {
+      "ExampleSproutClassTechnique.Employee": {
+        "System.String ExampleSproutClassTechnique.Employee::get_FirstName()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String ExampleSproutClassTechnique.Employee::get_LastName()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 ExampleSproutClassTechnique.Employee::get_UniqueId()": {
+          "Lines": {
+            "7": 1
+          },
+          "Branches": []
+        },
+        "System.Int32 ExampleSproutClassTechnique.Employee::get_Salary()": {
+          "Lines": {
+            "8": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\CSharp\\DotnetXUnitAndMoqOverview\\ExampleSproutTechnique\\ExampleSproutClassTechnique\\EmployeeSalaryService.cs": {
+      "ExampleSproutClassTechnique.EmployeeSalaryService": {
+        "System.Collections.Generic.List`1<ExampleSproutClassTechnique.Employee> ExampleSproutClassTechnique.EmployeeSalaryService::GetEmployeeData()": {
+          "Lines": {
+            "6": 0,
+            "7": 0,
+            "8": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\CSharp\\DotnetXUnitAndMoqOverview\\ExampleSproutTechnique\\ExampleSproutClassTechnique\\ExployeeService.cs": {
+      "ExampleSproutClassTechnique.ExployeeService": {
+        "System.Collections.Generic.List`1<ExampleSproutClassTechnique.Employee> ExampleSproutClassTechnique.ExployeeService::GetEmployeeData()": {
+          "Lines": {
+            "6": 0,
+            "7": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

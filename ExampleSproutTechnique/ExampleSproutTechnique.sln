@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSproutMethodTechnique", "ExampleSproutMethodTechnique\ExampleSproutMethodTechnique.csproj", "{434F7EF7-E234-496D-9A22-8D16204C790C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSproutTechnique.Tests", "ExampleSproutTechnique.Tests\ExampleSproutTechnique.Tests.csproj", "{E289D81A-636B-41B2-BAC9-577971158126}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSproutMethodTechnique.Tests", "ExampleSproutMethodTechnique.Tests\ExampleSproutMethodTechnique.Tests.csproj", "{E289D81A-636B-41B2-BAC9-577971158126}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSproutClassTechnique", "ExampleSproutClassTechnique\ExampleSproutClassTechnique.csproj", "{8F0BD38C-2E6A-4382-B113-D4AE2E0B3AE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSproutClassTechnique.Tests", "ExampleSproutClassTechnique.Tests\ExampleSproutClassTechnique.Tests.csproj", "{C5A7AFF4-C180-426A-B076-F7AE2E6A7328}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +32,9 @@ Global
 		{8F0BD38C-2E6A-4382-B113-D4AE2E0B3AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F0BD38C-2E6A-4382-B113-D4AE2E0B3AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F0BD38C-2E6A-4382-B113-D4AE2E0B3AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A7AFF4-C180-426A-B076-F7AE2E6A7328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A7AFF4-C180-426A-B076-F7AE2E6A7328}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A7AFF4-C180-426A-B076-F7AE2E6A7328}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A7AFF4-C180-426A-B076-F7AE2E6A7328}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
